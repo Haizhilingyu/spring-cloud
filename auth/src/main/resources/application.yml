@@ -1,0 +1,20 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: auth
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+
+eureka:
+  instance:
+    hostname: auth
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
