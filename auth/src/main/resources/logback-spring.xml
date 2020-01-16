@@ -6,7 +6,7 @@
     <appender name="MY_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <Prudent>true</Prudent>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/tmp/logs/euraka.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/tmp/logs/auth.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
             <totalSizeCap>3GB</totalSizeCap>
         </rollingPolicy>
@@ -25,7 +25,7 @@
         <!-- encoder必须要有，是logback和logstash的纽带 -->
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
             <!-- 用户自定义Json字符串，用于向logstash提交额外的自定义属性。可在logstash的input里接收该参数 -->
-            <customFields>{"appName":"eureka-log"}</customFields>
+            <customFields>{"appName":"auth-log"}</customFields>
         </encoder>
     </appender>
 
