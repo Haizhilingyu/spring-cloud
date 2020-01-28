@@ -1,0 +1,29 @@
+version: '3.2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    volumes:
+      - type: bind
+        source: ./mysql/conf.d
+        target: /etc/mysql/conf.d
+        read_only: true
+#      初次运行时docker将自动执行下面sql文件进行初始化
+      - type: bind
+        source: ./mysql/personManage.sql
+        target: /docker-entrypoint-initdb.d/personManage.sql
+        read_only: true
+      - type: bind
+        source: ./mysql/var/lib/mysql
+        target: /var/lib/mysql
+    networks:
+      - micro
+
+networks:
+  micro:
+    driver: bridge
+
